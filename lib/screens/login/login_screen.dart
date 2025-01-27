@@ -104,13 +104,33 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushAndRemoveUntil(
+                      Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const MainLayout(),
+                        PageRouteBuilder(
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  MainLayout(),
+                          transitionsBuilder:
+                              (context, animation, secondaryAnimation, child) {
+                            var curve = Curves.easeOutCubic;
+                            var tween = Tween(
+                                    begin: const Offset(1.0, 0.0),
+                                    end: Offset.zero)
+                                .chain(CurveTween(curve: curve));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: ScaleTransition(
+                                scale: Tween<double>(begin: 0.9, end: 1.0)
+                                    .animate(CurvedAnimation(
+                                        parent: animation, curve: curve)),
+                                child: child,
+                              ),
+                            );
+                          },
+                          transitionDuration: Duration(milliseconds: 400),
                         ),
-                        (route) => false,
                       );
+
                       print('Username: ${_usernameController.text}');
                       print('Password: ${_passwordController.text}');
                     },

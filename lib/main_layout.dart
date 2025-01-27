@@ -4,7 +4,7 @@ import 'package:jajapay/constans/color.dart';
 import 'package:jajapay/screens/account/account_screen.dart';
 import 'package:jajapay/screens/home/home_screen.dart';
 import 'package:jajapay/screens/history/history_screen.dart';
-import 'package:jajapay/components/bottombar_components.dart';
+import 'package:jajapay/widget/bottombar_components.dart';
 import 'package:jajapay/screens/wallet/wallet_screen-.dart';
 
 class MainLayout extends StatefulWidget {

@@ -2,6 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:jajapay/constans/color.dart';
 import 'package:jajapay/screens/login/login_screen.dart';
+import 'package:jajapay/webview/kebijakan_webview.dart';
+import 'package:jajapay/webview/pusat_bantuan_webview.dart';
+import 'package:jajapay/webview/syarat_ketentuan.dart';
+import 'package:jajapay/webview/tentang_jajapay.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -171,7 +175,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 35,
+                      height: 25,
                     )
                   ],
                 ),
@@ -200,82 +204,122 @@ class _AccountScreenState extends State<AccountScreen> {
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/images/setting_icon.png",
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Tentang Jaja Pay",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TentangJajaPayWebview(),
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/setting_icon.png",
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            "Tentang Jaja Pay",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/images/tanya_icon.png",
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Syarat & Ketentuan",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SyaratKetentuan(),
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/tanya_icon.png",
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            "Syarat & Ketentuan",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/images/bio_icon.png",
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Kebijakan Privasi",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KebijakanWebview(),
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/bio_icon.png",
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            "Kebijakan Privasi",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          "assets/images/bio_icon.png",
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Pusat Bantuan",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PusatBantuanWebview(),
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/bio_icon.png",
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Text(
+                            "Pusat Bantuan",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 25,
