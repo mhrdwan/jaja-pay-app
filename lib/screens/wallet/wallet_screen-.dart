@@ -453,7 +453,7 @@ class _WalletScreenState extends State<WalletScreen> {
                             // List Transaksi per Bulan
                             ...monthTransactions.map((transaction) {
                               return _buildTransactionItem(transaction);
-                            }).toList(),
+                            }),
                             SizedBox(height: 12), // Spacing antar grup bulan
                           ],
                         );

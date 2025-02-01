@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:jajapay/constans/color.dart';
 import 'package:jajapay/main_layout.dart';
-import 'package:jajapay/screens/home/home_screen.dart';
+import 'package:jajapay/screens/login/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -169,10 +169,41 @@ class _LoginScreenState extends State<LoginScreen> {
                               TextStyle(fontSize: 15, color: JajaColors.grey),
                         ),
                         SizedBox(width: 5),
-                        Text(
-                          "Sign up",
-                          style: TextStyle(
-                              fontSize: 15, color: JajaColors.JajaYellow.Y300),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        RegisterScreen(),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  var curve = Curves.easeOutCubic;
+                                  var tween = Tween(
+                                          begin: const Offset(1.0, 0.0),
+                                          end: Offset.zero)
+                                      .chain(CurveTween(curve: curve));
+                                  return SlideTransition(
+                                    position: animation.drive(tween),
+                                    child: ScaleTransition(
+                                      scale: Tween<double>(begin: 0.9, end: 1.0)
+                                          .animate(CurvedAnimation(
+                                              parent: animation, curve: curve)),
+                                      child: child,
+                                    ),
+                                  );
+                                },
+                                transitionDuration: Duration(milliseconds: 400),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: JajaColors.JajaYellow.Y300),
+                          ),
                         ),
                       ],
                     ),

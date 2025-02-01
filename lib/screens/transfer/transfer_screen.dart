@@ -12,7 +12,7 @@ class TransferScreen extends StatefulWidget {
 
 class _TransferScreenState extends State<TransferScreen>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController = TabController(length: 3, vsync: this);
+  late final TabController _tabController = TabController(length: 3, vsync: this);
 
   @override
   void dispose() {

@@ -1,6 +1,8 @@
 // screens/home/home_screen.dart
 import 'package:flutter/material.dart';
+import 'package:jajapay/screens/notification/notification_screen.dart';
 import 'package:jajapay/screens/qris/qris_screen.dart';
+import 'package:jajapay/screens/topup/topup_screen.dart';
 import 'package:jajapay/widget/promo_component.dart';
 import 'package:jajapay/constans/color.dart';
 import 'package:jajapay/screens/transfer/transfer_screen.dart';
@@ -32,7 +34,33 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         leadingWidth: isMobile ? 120 : 150, // Lebar leading responsif
         actions: [
-          Image.asset('assets/images/lonceng.png'),
+          InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        NotificationScreen(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      var curve = Curves.easeOutCubic;
+                      var tween =
+                          Tween(begin: const Offset(1.0, 0.0), end: Offset.zero)
+                              .chain(CurveTween(curve: curve));
+                      return SlideTransition(
+                        position: animation.drive(tween),
+                        child: ScaleTransition(
+                          scale: Tween<double>(begin: 0.9, end: 1.0).animate(
+                              CurvedAnimation(parent: animation, curve: curve)),
+                          child: child,
+                        ),
+                      );
+                    },
+                    transitionDuration: Duration(milliseconds: 400),
+                  ),
+                );
+              },
+              child: Image.asset('assets/images/lonceng.png')),
           SizedBox(width: isMobile ? 10 : 20), // Spasi responsif
         ],
       ),
@@ -151,21 +179,51 @@ class _HomeScreenState extends State<HomeScreen> {
                   Positioned(
                     top: isMobile ? 40 : 60,
                     right: isMobile ? 25 : 40,
-                    child: Container(
-                      width: isMobile ? 120 : 150, // Lebar responsif
-                      height: isMobile ? 48 : 60, // Tinggi responsif
-                      decoration: BoxDecoration(
-                        color: JajaColors.JajaYellow.Y300,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "+ Topup Saldo",
-                          style: TextStyle(
-                            fontSize:
-                                isMobile ? 12 : 16, // Ukuran font responsif
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    TopupScreen(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              var curve = Curves.easeOutCubic;
+                              var tween = Tween(
+                                      begin: const Offset(1.0, 0.0),
+                                      end: Offset.zero)
+                                  .chain(CurveTween(curve: curve));
+                              return SlideTransition(
+                                position: animation.drive(tween),
+                                child: ScaleTransition(
+                                  scale: Tween<double>(begin: 0.9, end: 1.0)
+                                      .animate(CurvedAnimation(
+                                          parent: animation, curve: curve)),
+                                  child: child,
+                                ),
+                              );
+                            },
+                            transitionDuration: Duration(milliseconds: 400),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: isMobile ? 120 : 150, // Lebar responsif
+                        height: isMobile ? 48 : 60, // Tinggi responsif
+                        decoration: BoxDecoration(
+                          color: JajaColors.JajaYellow.Y300,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "+ Topup Saldo",
+                            style: TextStyle(
+                              fontSize:
+                                  isMobile ? 12 : 16, // Ukuran font responsif
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
